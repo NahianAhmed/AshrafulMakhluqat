@@ -1,10 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashraful Makhluqat - Repository</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Ashraful Makhluqat - Islamic Blog</title>
+    <meta name="description" content="An Islamic blog featuring articles on faith, spirituality, and Islamic teachings">
+    <meta name="keywords" content="Islam, Islamic blog, faith, spirituality, Quran, Hadith, Islamic teachings">
+    <meta name="author" content="NahianAhmed">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f766e">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nahianahmed.github.io/AshrafulMakhluqat/">
+    <meta property="og:title" content="Ashraful Makhluqat - Islamic Blog">
+    <meta property="og:description" content="An Islamic blog featuring articles on faith, spirituality, and Islamic teachings">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nahianahmed.github.io/AshrafulMakhluqat/">
+    <meta property="twitter:title" content="Ashraful Makhluqat - Islamic Blog">
+    <meta property="twitter:description" content="An Islamic blog featuring articles on faith, spirituality, and Islamic teachings">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%230f766e' d='M256 48c114.953 0 208 93.029 208 208 0 114.953-93.029 208-208 208-114.953 0-208-93.029-208-208 0-114.953 93.029-208 208-208z'/%3E%3C/svg%3E">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Ashraful Makhluqat",
+      "description": "An Islamic blog featuring articles on faith, spirituality, and Islamic teachings",
+      "url": "https://nahianahmed.github.io/AshrafulMakhluqat/",
+      "author": {
+        "@type": "Person",
+        "name": "NahianAhmed"
+      },
+      "inLanguage": "en",
+      "about": {
+        "@type": "Thing",
+        "name": "Islam",
+        "description": "Islamic faith, spirituality, and religious teachings"
+      },
+      "keywords": "Islam, Islamic blog, faith, spirituality, Quran, Hadith, Islamic teachings"
+    }
+    </script>
     <style>
         * {
             margin: 0;
@@ -16,8 +69,56 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
             min-height: 100vh;
+        }
+
+        .arabic-text {
+            font-family: 'Amiri', serif;
+            direction: rtl;
+            text-align: right;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0f766e;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #0f766e;
         }
 
         .container {
@@ -54,10 +155,114 @@
         }
 
         .card-header {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
             color: white;
             padding: 2rem;
             text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .blog-post {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .blog-post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-post-content {
+            padding: 1.5rem;
+        }
+
+        .blog-post h3 {
+            color: #0f766e;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .blog-post-meta {
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-post p {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #0f766e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .prayer-times {
+            background: linear-gradient(135deg, #fef3c7 0%, #fcd34d 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .prayer-times h3 {
+            color: #92400e;
+            margin-bottom: 1rem;
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .prayer-time {
+            background: white;
+            padding: 0.75rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .prayer-name {
+            font-weight: 600;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+
+        .prayer-time-value {
+            color: #451a03;
+            font-size: 0.85rem;
         }
 
         .card-header h2 {
@@ -81,13 +286,49 @@
             background: #f8fafc;
             border-radius: 12px;
             padding: 1.5rem;
-            border-left: 4px solid #4f46e5;
+            border-left: 4px solid #0f766e;
         }
 
         .info-card h3 {
-            color: #4f46e5;
+            color: #0f766e;
             font-weight: 600;
             margin-bottom: 0.5rem;
+        }
+
+        .featured-section {
+            margin: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .category-tag {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .category-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
         }
 
         .info-card p {
@@ -168,7 +409,7 @@
         }
 
         .tech-tag {
-            background: #4f46e5;
+            background: #0f766e;
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -176,9 +417,43 @@
             font-weight: 500;
         }
 
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #0f766e;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
+            }
+
+            .navbar .container {
+                padding: 0 1rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                gap: 1rem;
+            }
+
+            .nav-links.open {
+                display: flex;
             }
 
             .header h1 {
@@ -192,80 +467,294 @@
             .repo-info {
                 grid-template-columns: 1fr;
             }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .categories {
+                gap: 0.5rem;
+            }
+
+            .category-tag {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .prayer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .prayer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Focus styles for accessibility */
+        *:focus {
+            outline: 2px solid #0f766e;
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .blog-post {
+                border: 2px solid #000;
+            }
+            
+            .category-tag {
+                border: 1px solid rgba(255, 255, 255, 0.8);
+            }
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">أشرف المخلوقات</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#quran">Quran</a></li>
+                <li><a href="#hadith">Hadith</a></li>
+                <li><a href="#prayer">Prayer Times</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header class="header">
+        <header class="header" id="home">
             <h1>Ashraful Makhluqat</h1>
-            <p class="subtitle">A GitHub Repository</p>
+            <p class="subtitle arabic-text">أشرف المخلوقات - The Most Noble of Creation</p>
+            <p class="subtitle">Islamic Blog & Spiritual Guidance</p>
         </header>
 
-        <main class="main-card">
+        <section class="categories">
+            <a href="#quran" class="category-tag"><i class="fas fa-book"></i> Quran</a>
+            <a href="#hadith" class="category-tag"><i class="fas fa-scroll"></i> Hadith</a>
+            <a href="#prayer" class="category-tag"><i class="fas fa-pray"></i> Prayer</a>
+            <a href="#spirituality" class="category-tag"><i class="fas fa-heart"></i> Spirituality</a>
+            <a href="#islamic-history" class="category-tag"><i class="fas fa-mosque"></i> History</a>
+            <a href="#duas" class="category-tag"><i class="fas fa-hands"></i> Du'as</a>
+        </section>
+
+        <section class="prayer-times" id="prayer">
+            <h3><i class="fas fa-clock"></i> Today's Prayer Times</h3>
+            <div class="prayer-grid">
+                <div class="prayer-time">
+                    <div class="prayer-name">Fajr</div>
+                    <div class="prayer-time-value">5:15 AM</div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Dhuhr</div>
+                    <div class="prayer-time-value">12:30 PM</div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Asr</div>
+                    <div class="prayer-time-value">4:45 PM</div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Maghrib</div>
+                    <div class="prayer-time-value">7:20 PM</div>
+                </div>
+                <div class="prayer-time">
+                    <div class="prayer-name">Isha</div>
+                    <div class="prayer-time-value">8:45 PM</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-section" id="articles">
+            <h2 class="section-title">Featured Articles</h2>
+            
+            <div class="blog-grid">
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-quran-arabic"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Understanding the Beauty of Surah Al-Fatiha</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 30, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Explore the profound meanings and spiritual significance of the opening chapter of the Holy Quran, known as the "Mother of the Book" (Umm al-Kitab)...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-mosque"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>The Five Pillars of Islam: A Complete Guide</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 28, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Learn about the fundamental acts of worship that form the foundation of Muslim life: Shahada, Salah, Zakat, Sawm, and Hajj...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Daily Du'as for Spiritual Protection</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 25, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Discover essential supplications from the Quran and Sunnah that provide spiritual protection and bring peace to the heart...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Purification of the Soul (Tazkiyah)</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 22, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Understanding the Islamic concept of spiritual purification and practical steps to cleanse the heart from spiritual ailments...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>The Blessed Month of Ramadan</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 20, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Preparing for and maximizing the spiritual benefits of the holy month through fasting, prayer, and increased devotion...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-post-image">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="blog-post-content">
+                        <h3>Stories of the Prophets: Lessons for Today</h3>
+                        <div class="blog-post-meta">
+                            <i class="fas fa-calendar"></i> August 18, 2025 | <i class="fas fa-user"></i> Admin
+                        </div>
+                        <p>Drawing inspiration and practical wisdom from the lives of Allah's messengers, may peace be upon them all...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <main class="main-card" id="about">
             <div class="card-header">
-                <h2>Repository Overview</h2>
-                <p>Welcome to the Ashraful Makhluqat project repository</p>
+                <h2>About This Blog</h2>
+                <p class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+                <p>In the Name of Allah, the Most Gracious, the Most Merciful</p>
             </div>
 
             <div class="card-content">
                 <section class="repo-info">
                     <div class="info-card">
-                        <h3>🚀 Project Status</h3>
-                        <p>Active development - Initial repository setup and project structure being established</p>
+                        <h3><i class="fas fa-star-and-crescent"></i> Mission</h3>
+                        <p>To share authentic Islamic knowledge and promote spiritual growth through Quranic teachings and prophetic guidance</p>
                     </div>
 
                     <div class="info-card">
-                        <h3>📝 Description</h3>
-                        <p>This repository contains the Ashraful Makhluqat project. More details will be added as the project develops.</p>
+                        <h3><i class="fas fa-book-quran"></i> Content Focus</h3>
+                        <p>Quran, Hadith, Islamic spirituality, worship guidelines, and practical Islamic living in the modern world</p>
                     </div>
 
                     <div class="info-card">
-                        <h3>👨‍💻 Author</h3>
-                        <p>NahianAhmed</p>
+                        <h3><i class="fas fa-users"></i> Community</h3>
+                        <p>Building a community of learners seeking to strengthen their faith and understanding of Islam</p>
                     </div>
 
                     <div class="info-card">
-                        <h3>📅 Created</h3>
-                        <p>August 2025</p>
+                        <h3><i class="fas fa-language"></i> Languages</h3>
+                        <p>Content available in English with Arabic references and transliterations</p>
                     </div>
                 </section>
 
                 <section class="tech-stack">
-                    <h3>Technology Stack</h3>
+                    <h3>Our Commitment</h3>
                     <div class="tech-tags">
-                        <span class="tech-tag">Git</span>
-                        <span class="tech-tag">GitHub</span>
-                        <span class="tech-tag">HTML</span>
-                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">Authentic Sources</span>
+                        <span class="tech-tag">Scholarly Verified</span>
+                        <span class="tech-tag">Regular Updates</span>
+                        <span class="tech-tag">Community Driven</span>
                     </div>
                 </section>
 
                 <section class="links-section">
-                    <h3>Quick Links</h3>
+                    <h3>Islamic Resources</h3>
                     <div class="links-grid">
-                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat" class="link-card github-link">
-                            <span class="icon">🐙</span>
-                            <h4>GitHub Repository</h4>
-                            <p>View source code and contribute</p>
+                        <a href="#quran" class="link-card">
+                            <span class="icon"><i class="fas fa-book-quran"></i></span>
+                            <h4>Quran Studies</h4>
+                            <p>Tafsir and verse explanations</p>
                         </a>
 
-                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat/issues" class="link-card">
-                            <span class="icon">🐛</span>
-                            <h4>Issues</h4>
-                            <p>Report bugs and feature requests</p>
+                        <a href="#hadith" class="link-card">
+                            <span class="icon"><i class="fas fa-scroll"></i></span>
+                            <h4>Hadith Collection</h4>
+                            <p>Authentic prophetic traditions</p>
                         </a>
 
-                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat/pulls" class="link-card">
-                            <span class="icon">🔄</span>
-                            <h4>Pull Requests</h4>
-                            <p>Submit contributions</p>
+                        <a href="#prayer" class="link-card">
+                            <span class="icon"><i class="fas fa-pray"></i></span>
+                            <h4>Prayer Guide</h4>
+                            <p>Complete salah instructions</p>
                         </a>
 
-                        <a href="https://github.com/NahianAhmed" class="link-card">
-                            <span class="icon">👤</span>
-                            <h4>Developer Profile</h4>
-                            <p>View other projects</p>
+                        <a href="#duas" class="link-card">
+                            <span class="icon"><i class="fas fa-hands"></i></span>
+                            <h4>Du'a Collection</h4>
+                            <p>Daily supplications</p>
                         </a>
                     </div>
                 </section>
@@ -273,34 +762,159 @@
         </main>
 
         <footer class="footer">
-            <p>&copy; 2025 NahianAhmed. Built with ❤️ for the GitHub community.</p>
+            <div class="arabic-text" style="font-size: 1.2rem; margin-bottom: 1rem;">
+                وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ
+            </div>
+            <p>"And I did not create the jinn and mankind except to worship Me" - Quran 51:56</p>
+            <p style="margin-top: 1rem;">&copy; 2025 Ashraful Makhluqat. Built with 🤲 for the Muslim community.</p>
+            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 0.5rem;">May Allah accept our efforts and guide us all.</p>
         </footer>
     </div>
 
     <script>
-        // Add smooth scrolling and interactive effects
         document.addEventListener('DOMContentLoaded', function() {
-            // Add fade-in animation
-            const cards = document.querySelectorAll('.info-card, .link-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'all 0.6s ease';
-                
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
+            // Mobile menu toggle
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
 
-            // Add click tracking for external links
-            const externalLinks = document.querySelectorAll('a[href^="https://"]');
-            externalLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    console.log('Navigating to:', this.href);
+            if (mobileMenuToggle && navLinks) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('open');
+                    const isOpen = navLinks.classList.contains('open');
+                    this.setAttribute('aria-expanded', isOpen);
+                    this.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+                });
+
+                // Close mobile menu when clicking on a link
+                navLinks.addEventListener('click', function(e) {
+                    if (e.target.tagName === 'A') {
+                        navLinks.classList.remove('open');
+                        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                        mobileMenuToggle.querySelector('i').className = 'fas fa-bars';
+                    }
+                });
+            }
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
                 });
             });
+
+            // Fade-in animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe cards and blog posts
+            document.querySelectorAll('.info-card, .blog-post, .prayer-times').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Update prayer times based on user location (simplified)
+            function updatePrayerTimes() {
+                const times = ['5:15 AM', '12:30 PM', '4:45 PM', '7:20 PM', '8:45 PM'];
+                const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                
+                prayers.forEach((prayer, index) => {
+                    const timeElement = document.querySelector(`[data-prayer="${prayer.toLowerCase()}"]`);
+                    if (timeElement) {
+                        timeElement.textContent = times[index];
+                    }
+                });
+            }
+
+            // Islamic date display
+            function displayIslamicDate() {
+                const today = new Date();
+                const hijriMonths = [
+                    'Muharram', 'Safar', 'Rabi al-Awwal', 'Rabi al-Thani',
+                    'Jumada al-Awwal', 'Jumada al-Thani', 'Rajab', 'Sha\'ban',
+                    'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+                ];
+                
+                // Simplified Hijri calculation (approximate)
+                const hijriYear = Math.floor((today.getFullYear() - 622) * 1.030684) + 1;
+                const monthIndex = today.getMonth();
+                
+                const dateDisplay = document.createElement('div');
+                dateDisplay.style.cssText = 'text-align: center; margin: 1rem 0; color: white; font-size: 0.9rem; opacity: 0.8;';
+                dateDisplay.innerHTML = `<i class="fas fa-calendar-alt"></i> Approximately ${hijriMonths[monthIndex]} ${hijriYear} AH`;
+                
+                const header = document.querySelector('.header');
+                if (header) {
+                    header.appendChild(dateDisplay);
+                }
+            }
+
+            // Initialize features
+            updatePrayerTimes();
+            displayIslamicDate();
+
+            // Performance optimization: Lazy load images when implemented
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            if (img.dataset.src) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                                imageObserver.unobserve(img);
+                            }
+                        }
+                    });
+                });
+
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    // Close any modals or overlays
+                    document.querySelectorAll('.modal.open').forEach(modal => {
+                        modal.classList.remove('open');
+                    });
+                }
+            });
         });
+
+        // Service Worker registration for offline capability
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nahianahmed.github.io/AshrafulMakhluqat/sitemap.xml
