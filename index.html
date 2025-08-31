@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashraful Makhluqat - Repository</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .main-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .card-header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .repo-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .info-card h3 {
+            color: #4f46e5;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        .links-section {
+            margin-top: 2rem;
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: #334155;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #4f46e5;
+        }
+
+        .link-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .link-card h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: #1e293b;
+        }
+
+        .link-card p {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .github-link {
+            background: linear-gradient(135deg, #24292f 0%, #0d1117 100%);
+            color: white;
+        }
+
+        .github-link:hover {
+            color: white;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: white;
+            opacity: 0.8;
+        }
+
+        .tech-stack {
+            margin-top: 2rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: #4f46e5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .repo-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Ashraful Makhluqat</h1>
+            <p class="subtitle">A GitHub Repository</p>
+        </header>
+
+        <main class="main-card">
+            <div class="card-header">
+                <h2>Repository Overview</h2>
+                <p>Welcome to the Ashraful Makhluqat project repository</p>
+            </div>
+
+            <div class="card-content">
+                <section class="repo-info">
+                    <div class="info-card">
+                        <h3>🚀 Project Status</h3>
+                        <p>Active development - Initial repository setup and project structure being established</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📝 Description</h3>
+                        <p>This repository contains the Ashraful Makhluqat project. More details will be added as the project develops.</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>👨‍💻 Author</h3>
+                        <p>NahianAhmed</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>📅 Created</h3>
+                        <p>August 2025</p>
+                    </div>
+                </section>
+
+                <section class="tech-stack">
+                    <h3>Technology Stack</h3>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                    </div>
+                </section>
+
+                <section class="links-section">
+                    <h3>Quick Links</h3>
+                    <div class="links-grid">
+                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat" class="link-card github-link">
+                            <span class="icon">🐙</span>
+                            <h4>GitHub Repository</h4>
+                            <p>View source code and contribute</p>
+                        </a>
+
+                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat/issues" class="link-card">
+                            <span class="icon">🐛</span>
+                            <h4>Issues</h4>
+                            <p>Report bugs and feature requests</p>
+                        </a>
+
+                        <a href="https://github.com/NahianAhmed/AshrafulMakhluqat/pulls" class="link-card">
+                            <span class="icon">🔄</span>
+                            <h4>Pull Requests</h4>
+                            <p>Submit contributions</p>
+                        </a>
+
+                        <a href="https://github.com/NahianAhmed" class="link-card">
+                            <span class="icon">👤</span>
+                            <h4>Developer Profile</h4>
+                            <p>View other projects</p>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 NahianAhmed. Built with ❤️ for the GitHub community.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add smooth scrolling and interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add fade-in animation
+            const cards = document.querySelectorAll('.info-card, .link-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+
+            // Add click tracking for external links
+            const externalLinks = document.querySelectorAll('a[href^="https://"]');
+            externalLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    console.log('Navigating to:', this.href);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
