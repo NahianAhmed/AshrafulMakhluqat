@@ -34,6 +34,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous">
     
+    <!-- Axios for API calls -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+    
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%230f766e' d='M256 48c114.953 0 208 93.029 208 208 0 114.953-93.029 208-208 208-114.953 0-208-93.029-208-208 0-114.953 93.029-208 208-208z'/%3E%3C/svg%3E">
     
@@ -263,6 +266,40 @@
         .prayer-time-value {
             color: #451a03;
             font-size: 0.85rem;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #0f766e;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .location-info {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            color: #92400e;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: #fecaca;
+            color: #991b1b;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
         }
 
         .card-header h2 {
@@ -576,26 +613,31 @@
 
         <section class="prayer-times" id="prayer">
             <h3><i class="fas fa-clock"></i> Today's Prayer Times</h3>
-            <div class="prayer-grid">
-                <div class="prayer-time">
-                    <div class="prayer-name">Fajr</div>
-                    <div class="prayer-time-value">5:15 AM</div>
+            <div id="prayer-times-container">
+                <div class="prayer-grid">
+                    <div class="prayer-time">
+                        <div class="prayer-name">Fajr</div>
+                        <div class="prayer-time-value" id="fajr-time"><span class="loading"></span></div>
+                    </div>
+                    <div class="prayer-time">
+                        <div class="prayer-name">Dhuhr</div>
+                        <div class="prayer-time-value" id="dhuhr-time"><span class="loading"></span></div>
+                    </div>
+                    <div class="prayer-time">
+                        <div class="prayer-name">Asr</div>
+                        <div class="prayer-time-value" id="asr-time"><span class="loading"></span></div>
+                    </div>
+                    <div class="prayer-time">
+                        <div class="prayer-name">Maghrib</div>
+                        <div class="prayer-time-value" id="maghrib-time"><span class="loading"></span></div>
+                    </div>
+                    <div class="prayer-time">
+                        <div class="prayer-name">Isha</div>
+                        <div class="prayer-time-value" id="isha-time"><span class="loading"></span></div>
+                    </div>
                 </div>
-                <div class="prayer-time">
-                    <div class="prayer-name">Dhuhr</div>
-                    <div class="prayer-time-value">12:30 PM</div>
-                </div>
-                <div class="prayer-time">
-                    <div class="prayer-name">Asr</div>
-                    <div class="prayer-time-value">4:45 PM</div>
-                </div>
-                <div class="prayer-time">
-                    <div class="prayer-name">Maghrib</div>
-                    <div class="prayer-time-value">7:20 PM</div>
-                </div>
-                <div class="prayer-time">
-                    <div class="prayer-name">Isha</div>
-                    <div class="prayer-time-value">8:45 PM</div>
+                <div class="location-info" id="location-display" style="display: none;">
+                    <i class="fas fa-map-marker-alt"></i> <span id="location-text">Loading location...</span>
                 </div>
             </div>
         </section>
@@ -832,17 +874,105 @@
                 observer.observe(el);
             });
 
-            // Update prayer times based on user location (simplified)
-            function updatePrayerTimes() {
-                const times = ['5:15 AM', '12:30 PM', '4:45 PM', '7:20 PM', '8:45 PM'];
-                const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
-                
-                prayers.forEach((prayer, index) => {
-                    const timeElement = document.querySelector(`[data-prayer="${prayer.toLowerCase()}"]`);
-                    if (timeElement) {
-                        timeElement.textContent = times[index];
+            // Dynamic prayer times fetching
+            async function fetchPrayerTimes(latitude, longitude, city = '') {
+                try {
+                    const today = new Date();
+                    const day = today.getDate();
+                    const month = today.getMonth() + 1;
+                    const year = today.getFullYear();
+                    
+                    // Using Aladhan API - a reliable Islamic prayer times API
+                    const response = await axios.get(`https://api.aladhan.com/v1/timings/${day}-${month}-${year}`, {
+                        params: {
+                            latitude: latitude,
+                            longitude: longitude,
+                            method: 2, // Islamic Society of North America (ISNA)
+                            tune: '0,0,0,0,0,0,0,0,0' // No adjustments
+                        }
+                    });
+
+                    if (response.data && response.data.data && response.data.data.timings) {
+                        const timings = response.data.data.timings;
+                        
+                        // Update prayer times in the UI
+                        document.getElementById('fajr-time').innerHTML = formatTime(timings.Fajr);
+                        document.getElementById('dhuhr-time').innerHTML = formatTime(timings.Dhuhr);
+                        document.getElementById('asr-time').innerHTML = formatTime(timings.Asr);
+                        document.getElementById('maghrib-time').innerHTML = formatTime(timings.Maghrib);
+                        document.getElementById('isha-time').innerHTML = formatTime(timings.Isha);
+
+                        // Show location info
+                        const locationDisplay = document.getElementById('location-display');
+                        const locationText = document.getElementById('location-text');
+                        if (city) {
+                            locationText.textContent = `Prayer times for ${city}`;
+                        } else {
+                            locationText.textContent = `Prayer times for your location (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`;
+                        }
+                        locationDisplay.style.display = 'block';
+
+                        console.log('Prayer times updated successfully');
+                    } else {
+                        throw new Error('Invalid API response');
                     }
+                } catch (error) {
+                    console.error('Error fetching prayer times:', error);
+                    showPrayerTimesError('Unable to fetch prayer times. Please check your internet connection.');
+                }
+            }
+
+            function formatTime(time24) {
+                const [hours, minutes] = time24.split(':');
+                const hour12 = hours % 12 || 12;
+                const ampm = hours < 12 ? 'AM' : 'PM';
+                return `${hour12}:${minutes} ${ampm}`;
+            }
+
+            function showPrayerTimesError(message) {
+                const container = document.getElementById('prayer-times-container');
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                errorDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+                
+                // Remove loading spinners
+                document.querySelectorAll('.prayer-time-value').forEach(el => {
+                    el.innerHTML = '--:--';
                 });
+                
+                container.appendChild(errorDiv);
+            }
+
+            async function getPrayerTimesWithLocation() {
+                if ('geolocation' in navigator) {
+                    try {
+                        const position = await new Promise((resolve, reject) => {
+                            navigator.geolocation.getCurrentPosition(resolve, reject, {
+                                timeout: 10000,
+                                enableHighAccuracy: true
+                            });
+                        });
+
+                        const { latitude, longitude } = position.coords;
+                        
+                        // Try to get city name using reverse geocoding
+                        try {
+                            const locationResponse = await axios.get(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`);
+                            const city = locationResponse.data?.city || locationResponse.data?.locality || '';
+                            await fetchPrayerTimes(latitude, longitude, city);
+                        } catch (geoError) {
+                            // Fallback without city name
+                            await fetchPrayerTimes(latitude, longitude);
+                        }
+
+                    } catch (error) {
+                        console.log('Geolocation failed, using default location (Dhaka, Bangladesh)');
+                        await fetchPrayerTimes(23.8103, 90.4125, 'Dhaka, Bangladesh');
+                    }
+                } else {
+                    console.log('Geolocation not supported, using default location');
+                    await fetchPrayerTimes(23.8103, 90.4125, 'Dhaka, Bangladesh');
+                }
             }
 
             // Islamic date display
@@ -869,7 +999,7 @@
             }
 
             // Initialize features
-            updatePrayerTimes();
+            getPrayerTimesWithLocation();
             displayIslamicDate();
 
             // Performance optimization: Lazy load images when implemented
