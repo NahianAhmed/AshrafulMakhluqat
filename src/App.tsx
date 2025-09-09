@@ -9,9 +9,14 @@ import { Prayer } from './pages/Prayer';
 import { About } from './pages/About';
 
 function App() {
+  // Get base name for GitHub Pages
+  const basename = import.meta.env.PROD 
+    ? '/AshrafulMakhluqat'
+    : '';
+
   return (
     <ErrorBoundary>
-      <Router>
+      <Router basename={basename}>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />

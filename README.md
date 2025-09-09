@@ -132,15 +132,43 @@ export function ComponentName({ prop }: ComponentProps) {
 
 ## 🚀 Deployment
 
+### Automatic Deployment to GitHub Pages
+
+The project is configured for automatic deployment to GitHub Pages via GitHub Actions:
+
+1. **Setup GitHub Pages**:
+   - Go to repository Settings → Pages
+   - Set Source to "GitHub Actions"
+
+2. **Deploy**:
+   ```bash
+   # Push to develop branch to trigger deployment
+   git checkout -b develop
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push -u origin develop
+   ```
+
+3. **Access**: Your site will be available at:
+   ```
+   https://nahianahmed.github.io/AshrafulMakhluqat/
+   ```
+
+### Manual Deployment
+
+```bash
+# Build and deploy manually
+npm run deploy
+```
+
 ### Build for Production
 
 ```bash
-npm run build
+npm run build              # Standard build
+npm run build:github       # Build with quality checks
 ```
 
-### Deploy to GitHub Pages
-
-The project is configured for GitHub Pages deployment. The built files will be in the `dist` directory.
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## 🤝 Contributing
 
