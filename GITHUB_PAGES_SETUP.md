@@ -10,10 +10,10 @@ Follow these steps to deploy your Islamic blog to GitHub Pages:
 3. Scroll down to **Pages** section
 4. Set **Source** to "**GitHub Actions**"
 
-### 2. Create and Push to Develop Branch
+### 2. Push to Main Branch
 ```bash
-# Create develop branch
-git checkout -b develop
+# Ensure you're on main branch
+git checkout main
 
 # Add all files
 git add .
@@ -21,8 +21,8 @@ git add .
 # Commit changes
 git commit -m "Setup GitHub Pages deployment"
 
-# Push to develop branch
-git push -u origin develop
+# Push to main branch
+git push origin main
 ```
 
 ### 3. Automatic Deployment
@@ -33,7 +33,7 @@ git push -u origin develop
 ## 📋 What's Already Configured
 
 ✅ **GitHub Actions Workflow** (`.github/workflows/deploy.yml`)
-- Triggers on push to `develop` branch
+- Triggers on push to `main` branch
 - Builds with Node.js 18
 - Runs type checking and linting
 - Deploys to GitHub Pages
@@ -56,8 +56,8 @@ git push -u origin develop
 
 ### Automatic (Recommended)
 ```bash
-# Any push to develop branch triggers deployment
-git push origin develop
+# Any push to main branch triggers deployment
+git push origin main
 ```
 
 ### Manual (Alternative)

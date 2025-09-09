@@ -4,7 +4,7 @@ This guide explains how to deploy the Ashraful Makhluqat React application to Gi
 
 ## 🚀 Automatic Deployment
 
-The project is configured for automatic deployment to GitHub Pages when you push to the `develop` branch.
+The project is configured for automatic deployment to GitHub Pages when you push to the `main` branch.
 
 ### Setup Steps
 
@@ -13,17 +13,17 @@ The project is configured for automatic deployment to GitHub Pages when you push
    - Navigate to "Pages" in the left sidebar
    - Set Source to "GitHub Actions"
 
-2. **Create develop branch**:
+2. **Ensure you're on main branch**:
    ```bash
-   git checkout -b develop
-   git push -u origin develop
+   git checkout main
+   git pull origin main
    ```
 
-3. **Push to develop branch**:
+3. **Push to main branch**:
    ```bash
    git add .
    git commit -m "Deploy to GitHub Pages"
-   git push origin develop
+   git push origin main
    ```
 
 ### Workflow Details

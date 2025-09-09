@@ -142,11 +142,11 @@ The project is configured for automatic deployment to GitHub Pages via GitHub Ac
 
 2. **Deploy**:
    ```bash
-   # Push to develop branch to trigger deployment
-   git checkout -b develop
+   # Push to main branch to trigger deployment
+   git checkout main
    git add .
    git commit -m "Deploy to GitHub Pages"
-   git push -u origin develop
+   git push origin main
    ```
 
 3. **Access**: Your site will be available at:
