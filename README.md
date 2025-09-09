@@ -168,7 +168,23 @@ npm run build              # Standard build
 npm run build:github       # Build with quality checks
 ```
 
-For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md).
+### Troubleshooting Deployment Issues
+
+**Common Issue: Branch Protection Rules**
+If you get an error about branch protection rules, ensure you're pushing to the `main` branch:
+```bash
+git checkout main
+git push origin main
+```
+
+**Common Issue: npm ci Error**
+If dependencies are out of sync:
+```bash
+npm install
+git add package-lock.json
+git commit -m "Update package-lock.json"
+git push origin main
+```
 
 ## 🤝 Contributing
 
